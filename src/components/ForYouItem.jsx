@@ -7,24 +7,49 @@ import { MdMoreHoriz } from "react-icons/md";
 const ForYouItem = ({ item }) => {
   return (
     <div
+      className="for-you-item"
       style={{
-        display: "flex",
         marginBottom: "30px",
         borderBottom: "1px solid #eee",
         paddingBottom: "20px",
       }}
     >
-      <div style={{ flex: 1 }}>
-        <div style={{ display: "flex", alignItems: "center", marginBottom: "10px" }}>
+      <div className="for-you-content" style={{ flex: 1 }}>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            marginBottom: "10px",
+          }}
+        >
           <img
             src={item.profileImage}
             alt="Author"
-            style={{ width: "40px", height: "40px", marginRight: "10px" }}
+            className="profile-image"
+            style={{ marginRight: "10px" }}
           />
-          <p style={{ fontSize: "14px", color: "#666", margin: 0 }}>{item.author}</p>
+          <p style={{ fontSize: "14px", color: "#666", margin: 0 }}>
+            {item.author}
+          </p>
         </div>
-        <h2 style={{ fontSize: "24px", margin: "10px 0" }}>{item.title}</h2>
-        <p style={{ fontSize: "16px", color: "#666" }}>{item.description}</p>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <div>
+            <h2 style={{ fontSize: "24px", margin: "0 0", flex: 1 }}>
+              {item.title}
+            </h2>
+            <p style={{ fontSize: "16px", color: "#666" }}>
+              {item.description}
+            </p>
+          </div>
+          <div style={{ flex: "0 0 100px", marginLeft: "10px" }}>
+            <img
+              src={item.image}
+              alt="Article"
+              style={{ width: "100%", height: "auto" }}
+            />
+          </div>
+        </div>
+        <div></div>
         <div
           style={{
             display: "flex",
@@ -49,7 +74,7 @@ const ForYouItem = ({ item }) => {
             <span style={{ marginRight: "10px" }}>
               <AiOutlineMinusCircle />
             </span>
-            <span style={{ marginRight: "10px" }}>
+            <span className="bookmark-icon" style={{ marginRight: "10px" }}>
               <BsBookmarkPlus />
             </span>
             <span>
@@ -57,13 +82,6 @@ const ForYouItem = ({ item }) => {
             </span>
           </div>
         </div>
-      </div>
-      <div style={{ flex: "0 0 200px", marginLeft: "20px" }}>
-        <img
-          src={item.image}
-          alt="Article"
-          style={{ width: "100%", height: "auto" }}
-        />
       </div>
     </div>
   );

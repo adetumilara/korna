@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { FaSearch } from "react-icons/fa";
 import { FaPenToSquare } from "react-icons/fa6";
 import { FaRegBell } from "react-icons/fa";
 
 const Navbar = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkScreenSize();
+    window.addEventListener("resize", checkScreenSize);
+
+    return () => window.removeEventListener("resize", checkScreenSize);
+  }, []);
   return (
     <nav
       style={{
@@ -58,39 +70,24 @@ const Navbar = () => {
         </div>
       </div>
       <div style={{ display: "flex", alignItems: "center" }}>
-        <div
-          className="write-bell"
-          style={{ display: "flex", alignItems: "center", marginRight: "20px" }}
-        >
-          <FaPenToSquare style={{ marginRight: "5px", cursor: "pointer" }} />
-          <span style={{ marginRight: "20px", cursor: "pointer" }}>Write</span>
-          <FaRegBell style={{ marginRight: "20px", cursor: "pointer" }} />
-        </div>
-        <div
-          className="search-mobile"
-          style={{ position: "relative", marginRight: "10px", display: "none" }}
-        >
-          <FaSearch
+        {!isMobile && (
+          <div
             style={{
-              position: "absolute",
-              left: "10px",
-              top: "50%",
-              transform: "translateY(-50%)",
-              color: "#666",
+              display: "flex",
+              alignItems: "center",
+              marginRight: "20px",
             }}
-          />
-          <input
-            type="text"
-            placeholder="Search"
-            style={{
-              padding: "8px 8px 8px 35px",
-              border: "1px solid #ccc",
-              borderRadius: "20px",
-              outline: "none",
-              width: "150px",
-            }}
-          />
-        </div>
+          >
+            <FaPenToSquare style={{ marginRight: "5px", cursor: "pointer" }} />
+            <span style={{ marginRight: "20px", cursor: "pointer" }}>
+              Write
+            </span>
+            <FaRegBell style={{ marginRight: "20px", cursor: "pointer" }} />
+          </div>
+        )}
+        {isMobile && (
+          <FaSearch style={{ marginRight: "10px", cursor: "pointer", color: "#666" }} />
+        )}
         <span style={{ cursor: "pointer" }}>&#128100;</span> {/* Profile */}
       </div>
     </nav>

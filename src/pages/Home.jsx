@@ -9,7 +9,7 @@ import Footer from "../components/Footer";
 const Home = () => {
   const [activeTab, setActiveTab] = useState("forYou");
 
-  // Dummy data for For You
+  // FOR YOU DATA
   const forYouData = [
     {
       author: "in Language Lab by Benben",
@@ -71,7 +71,7 @@ const Home = () => {
     },
   ];
 
-  // Dummy data for Staff Picks
+  // STAFF PICK DATA
   const staffPicksData = [
     {
       author: "in The Medium Handbook by Zule @ Medium",
@@ -106,7 +106,7 @@ const Home = () => {
     "Productivity",
   ];
 
-  // Who to Follow
+  // WHO TO FOLLOW DATA
   const whoToFollowData = [
     {
       name: "Dr. Derek Austin",
